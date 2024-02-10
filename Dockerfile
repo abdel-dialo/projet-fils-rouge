@@ -1,13 +1,9 @@
 ARG VERSION="3.6-alpine"
 FROM python:$VERSION
-ARG ODOO_URL
-ENV ODOO_URL=$ODOO_URL
-ARG PGADMIN_URL
-ENV PGADMIN_URL=$PGADMIN_URL
-EXPOSE 8080
+ENV ODOO_URL="https://www.odoo.com"
+ENV PGADMIN_URL="https://www.pgadmin.org" 
+ADD  ./* /opt
 WORKDIR /opt
-ADD  ./static   /opt
-ADD ./templates  /opt
-ADD ./app.py /opt
-RUN pip install Flask
-CMD ["sh", "-c", "python app.py $ODOO_URL $PGADMIN_URL"]
+RUN pip install -r ./requirements.txt
+EXPOSE 8080
+CMD ["python", "app.py"]
