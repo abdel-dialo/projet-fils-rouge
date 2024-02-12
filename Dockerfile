@@ -1,7 +1,7 @@
 ARG VERSION="3.6-alpine"
 FROM python:$VERSION
-ENV ODOO_URL="https://www.odoo.com"
-ENV PGADMIN_URL="https://www.pgadmin.org" 
+ENV ODOO_URL: https://odoo.comm
+ENV PGADMIN_URL: https://pgadmin.org
 ADD  ./* /opt
 WORKDIR /opt
 RUN pip install -r ./requirements.txt
